@@ -10,7 +10,6 @@
 
 //#include "system.h"
 
-#include "main.h"
 //int PORTB = 0;
 //void InitApp();
 void setUp(void)

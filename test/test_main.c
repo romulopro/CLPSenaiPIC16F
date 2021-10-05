@@ -34,11 +34,6 @@ void test_PORTDiniciaZero(){
     
 }
 
-// void test_interrupcaoGEIEHabilitada(){
-//     void InitApp();
-//     GIE = 0;
-//     //printf("%d", INTCON);
-//     TEST_ASSERT_BITS_HIGH(0x00FF, INTCON);
-// }
+
 
 #endif // TEST

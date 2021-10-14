@@ -79,7 +79,7 @@
 
 #:tools:
   :test_compiler:
-    :name: "Microchip XC8 Compiler"
+    :name: "GCC no modo ANSI C - c90"
     :executable: gcc
     :arguments:
       - -std=c90

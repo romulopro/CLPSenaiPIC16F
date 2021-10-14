@@ -3,6 +3,17 @@
 #ifndef HAL_H
 #define HAL_H
 
+void ligaBuzzer()
+void desligaBuzzer()
+void habilitaEscritaDisplay()
+bool isBotaoDireitaApertado()
+bool isBotaoEsquerdaApertado()
+uint8_t readPORTA()
+bool isBotaoCimaApertado()
+bool isBotaoBaixoApertado()
+bool isBotaoEnterApertado()
+bool isBotaoESCApertado()
+
 void ligaBuzzer(){
     PORTAbits.RA1 = 1;
 }

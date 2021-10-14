@@ -1,6 +1,6 @@
 #ifdef TEST
 #include "support/stub_pic16f877a.h"
-#include "mock_xc.h"
+//#include "mock_xc.h"
 #include "main.h"
 
 
@@ -29,8 +29,9 @@ void test_main_NeedToImplement(void)
 }
 
 void test_PORTDiniciaZero(){
-    
-    
+    //PORTD = 0;
+    PORTDbits.RD0 = 1;
+    TEST_ASSERT_EQUAL_UINT8(PORTD, 1);
     
 }
 

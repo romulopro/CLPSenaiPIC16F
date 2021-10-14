@@ -80,7 +80,7 @@ typedef union {
  unsigned PORTB :8;
  };
 } PORTBbits_t;
-extern volatile PORTBbits_t PORTBbits ;//__at0x006);
+volatile PORTBbits_t PORTBbits ;//__at0x006);
 
 // Register: PORTC
 // bitfield definitions
@@ -801,7 +801,7 @@ extern volatile EECON1bits_t EECON1bits ;//__at0x18C);
 // #define RB5 PORTBbits.RB5
 // #define RB6 PORTBbits.RB6
 // #define RB7 PORTBbits.RB7
-// #define PORTB PORTBbits.PORTB
+#define PORTB PORTBbits.PORTB
 
 //char INTCON;
 //#define TMR0IE 0x04

@@ -70,6 +70,32 @@ bool isBotaoEnterApertado(){
 uint8_t readPORTA(){
     return PORTAbits.PORTA;
 }
+
+uint8_t readPORTC(){
+    return PORTCbits.PORTC;
+}
+extern void inline set_RB5(){
+    PORTBbits.RB5 = 1;
+}
+
+void inline clear_RB5(){
+    PORTBbits.RB5 = 0;
+}
+void inline set_RA3(){
+    PORTAbits.RA3 = 1;
+}
+
+void inline clear_RA3(){
+    PORTAbits.RA3 = 0;
+}
+void inline set_RA2(){
+    PORTAbits.RA2 = 1;
+}
+
+void inline clear_RA2(){
+    PORTAbits.RA2 = 0;
+}
+
 #endif
 //
 

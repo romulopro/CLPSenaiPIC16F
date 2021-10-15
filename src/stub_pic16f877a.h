@@ -15,7 +15,7 @@
 
 //char PORTD = 0;
 //extern char PORTD = 0;
-char TRISD = 0;
+//char TRISD = 0;
 //#include "__at.h"
 
 // Register: INDF
@@ -61,7 +61,7 @@ typedef union {
  unsigned FSR :8;
  };
 } PORTAbits_t;
-extern volatile PORTAbits_t PORTAbits ;//__at0x005);
+volatile PORTAbits_t PORTAbits ;//__at0x005);
 
 // Register: PORTB
 // bitfield definitions
@@ -99,7 +99,7 @@ typedef union {
  unsigned PORTC :8;
  };
 } PORTCbits_t;
-extern volatile PORTCbits_t PORTCbits ;//__at0x007);
+volatile PORTCbits_t PORTCbits ;//__at0x007);
 
 // // Register: PORTD
 // // bitfield definitions
@@ -132,7 +132,7 @@ typedef union {
  unsigned PORTE :8;
  };
 } PORTEbits_t;
-extern volatile PORTEbits_t PORTEbits ;//__at0x009);
+volatile PORTEbits_t PORTEbits ;//__at0x009);
 
 // Register: PCLATH
 // bitfield definitions
@@ -808,7 +808,7 @@ extern volatile EECON1bits_t EECON1bits ;//__at0x18C);
 
 #define INDF INDFbits.INDF
 #define FSR FSRbits.FSR
-#define PORTA PORTAbits.PORTA
+
 #define PORTC PORTCbits.PORTC
 #define PORTD PORTDbits.PORTD
 #define PORTE PORTEbits.PORTE

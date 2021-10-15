@@ -1,19 +1,14 @@
-#include <xc.h>
+
 
 #ifndef HAL_H
 #define HAL_H
-
-void ligaBuzzer()
-void desligaBuzzer()
-void habilitaEscritaDisplay()
-bool isBotaoDireitaApertado()
-bool isBotaoEsquerdaApertado()
-uint8_t readPORTA()
-bool isBotaoCimaApertado()
-bool isBotaoBaixoApertado()
-bool isBotaoEnterApertado()
-bool isBotaoESCApertado()
-
+#include <xc.h>
+#include "hal.h"
+#include <stdint.h>
+#include <stdbool.h>
+#ifdef TEST
+#include "stub_pic16f877a.h"
+#endif
 void ligaBuzzer(){
     PORTAbits.RA1 = 1;
 }
@@ -23,76 +18,58 @@ void desligaBuzzer(){
 }
 
 void habilitaEscritaDisplay(){
-
+    return;
 }
 
 bool isBotaoDireitaApertado(){
-    if(PORTBbits.RB4 == 1){
-        return true;
-    }
-    return false;
+    return PORTBbits.RB4 == 1;
 }
 
 bool isBotaoEsquerdaApertado(){
-    if(PORTBbits.RB6 == 1){
-        return true;
-    }
-    return false;
+    return PORTBbits.RB6 == 1;
 }
 
 bool isBotaoCimaApertado(){
-    if(PORTBbits.RB7 == 1){
-        return true;
-    }
-    return false;
+    return PORTBbits.RB7 == 1;
 }
 
 bool isBotaoBaixoApertado(){
-    if(PORTEbits.RE0 == 1){
-        return true;
-    }
-    return false;
+    return PORTEbits.RE0 == 1;
 }
 
 bool isBotaoESCApertado(){
-    if(PORTEbits.RE1 == 1){
-        return true;
-    }
-    return false;
+    return PORTEbits.RE1 == 1;
 }
 
 bool isBotaoEnterApertado(){
-    if(PORTEbits.RE2 == 1){
-        return true;
-    }
-    return false;
+    return PORTEbits.RE2 == 1;
 }
-uint8_t readPORTA(){
-    return PORTAbits.PORTA;
+PORTAbits_t readPORTA(){
+    return PORTAbits;
 }
 
-uint8_t readPORTC(){
-    return PORTCbits.PORTC;
+PORTCbits_t readPORTC(){
+    return PORTCbits;
 }
 extern void inline set_RB5(){
     PORTBbits.RB5 = 1;
 }
 
-void inline clear_RB5(){
+extern void inline clear_RB5(){
     PORTBbits.RB5 = 0;
 }
-void inline set_RA3(){
+extern void inline set_RA3(){
     PORTAbits.RA3 = 1;
 }
 
-void inline clear_RA3(){
+extern void inline clear_RA3(){
     PORTAbits.RA3 = 0;
 }
-void inline set_RA2(){
+extern void inline set_RA2(){
     PORTAbits.RA2 = 1;
 }
 
-void inline clear_RA2(){
+extern void inline clear_RA2(){
     PORTAbits.RA2 = 0;
 }
 

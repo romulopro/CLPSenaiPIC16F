@@ -14,7 +14,7 @@ bool isBotaoCimaApertado(void);
 bool isBotaoBaixoApertado(void);
 bool isBotaoEnterApertado(void);
 bool isBotaoESCApertado(void);
-extern void set_RB5(void);
+void set_RB5(void);
 
 void clear_RB5(void);
 void set_RA3(void);

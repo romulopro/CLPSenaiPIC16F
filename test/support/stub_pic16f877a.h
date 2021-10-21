@@ -58,7 +58,7 @@ typedef union {
         unsigned RA5                    :1;
     };
  struct {
- unsigned FSR :8;
+ unsigned PORTA :8;
  };
 } PORTAbits_t;
 extern volatile PORTAbits_t PORTAbits ;//__at0x005);

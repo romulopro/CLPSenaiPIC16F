@@ -17,12 +17,18 @@ void test_lcd_NeedToImplement(void)
     TEST_IGNORE_MESSAGE("Need to Implement lcd");
 }
 void test_lcd_habilitaEscrita(){
-    //void set_LCD_RS();
-    PORTBbits.RB1 = 1;
+    set_LCD_RS();
+    //PORTBbits.RB1 = 1;
     //PORTC = 0;
     // PORTAbits.RA0 = 0;
     // PORTE = 0;
-    TEST_ASSERT_EQUAL_UINT8(PORTB, 1);
+    TEST_ASSERT_EQUAL_CHAR(PORTB, 0b00100000);
 }
-
+void test_LCD_init(){
+    LCD_Init();
+    int virtualPORTA = (int)PORTA;
+    TEST_ASSERT_EQUAL_HEX(0b00100000, PORTB);
+    
+    TEST_ASSERT_EQUAL_HEX(virtualPORTA, 0b00001000);
+}
 #endif // TEST

@@ -9,7 +9,7 @@ void desligaBuzzer(void);
 void habilitaEscritaDisplay(void);
 bool isBotaoDireitaApertado(void);
 bool isBotaoEsquerdaApertado(void);
-uint8_t readPORTA(void);
+char readPORTA(void);
 bool isBotaoCimaApertado(void);
 bool isBotaoBaixoApertado(void);
 bool isBotaoEnterApertado(void);
@@ -23,4 +23,5 @@ void clear_RA3(void);
 void set_RA2(void);
 
 void clear_RA2(void);
+void writePORTB(char virtualPORTB);
 #endif

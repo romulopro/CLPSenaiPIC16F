@@ -51,6 +51,14 @@ PORTAbits_t readPORTA(){
 PORTCbits_t readPORTC(){
     return PORTCbits;
 }
+
+char readPORTB(){
+    return (char)PORTB;
+}
+void writePORTB(char virtualPORTB){
+    PORTB |= virtualPORTB;
+    return;
+}
 extern void inline set_RB5(){
     PORTBbits.RB5 = 1;
 }

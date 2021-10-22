@@ -56,7 +56,7 @@ char readPORTB(){
     return (char)PORTB;
 }
 void writePORTB(char virtualPORTB){
-    PORTB |= virtualPORTB;
+    PORTB = virtualPORTB;
     return;
 }
 extern void inline set_RB5(){

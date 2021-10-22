@@ -58,3 +58,10 @@ void LCD_Init(){
 
     //put 10x delay
 }
+    void LCD_WriteCommand(char cmd){
+        clear_LCD_E();
+        clear_LCD_RS();
+        clear_LCD_RW();
+        writePORTB(0x08);
+        return;
+}

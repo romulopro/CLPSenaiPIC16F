@@ -14,4 +14,5 @@ void set_LCD_E(void);
 
 void clear_LCD_E(void);
 void LCD_Init(void);
+void LCD_WriteCommand(char);
 #endif // LCD_H

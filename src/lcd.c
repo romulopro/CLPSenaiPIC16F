@@ -12,7 +12,9 @@
 #define LCD_RS PORTBbits.RB5
 #define LCD_RW PORTAbits.RA3
 #define LCD_E PORTAbits.RA2
-
+#define SET_LCD_MODE_4BIT_2LINES_5X8PIXEL 0x28
+#define TURN_VISIBLE_UNDERLINE_CURSOR 0x0E
+#define PUT_LCD_CURSOR_AT_HOME 0x02
 // void set_LCD_RS(){
 //     set_RB5();
 //     return;
@@ -44,23 +46,14 @@ void LCD_writeMessage(){
 void LCD_Init(){
 
     //send higher nibble
-    char virtualPORTB = 0;
-    char SET_4BIT_OP = 0x20;
-    PORTB |= ((SET_4BIT_OP >> 4) & 0x0F);
-    LCD_RS = 0;
-    LCD_RW = 0;
-    LCD_E = 1;
-    //put x delay
-    LCD_E = 0;
-    //put 10x delay
+    
+    LCD_WriteCommand(SET_LCD_MODE_4BIT_2LINES_5X8PIXEL);
+    LCD_WriteCommand(TURN_VISIBLE_UNDERLINE_CURSOR);
+    LCD_WriteCommand(PUT_LCD_CURSOR_AT_HOME);
+    /*At init, should display serial baud rate, modbus device address,
+    */ 
 
-    //send lower nibble
-    PORTB |= (SET_4BIT_OP & (0x0F));
-    LCD_RS = 0;
-    LCD_RW = 0;
-    LCD_E = 1;
-    //put x delay
-    LCD_E = 0;
+
 
     //put 10x delay
 }

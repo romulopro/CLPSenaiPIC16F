@@ -4,6 +4,10 @@
 #include "hal.h"
 #include "lcd.h"
 
+#define LCD_RS PORTBbits.RB5
+#define LCD_RW PORTAbits.RA3
+#define LCD_E PORTAbits.RA2
+
 void setUp(void)
 {
 }
@@ -12,12 +16,9 @@ void tearDown(void)
 {
 }
 
-void test_lcd_NeedToImplement(void)
-{
-    TEST_IGNORE_MESSAGE("Need to Implement lcd");
-}
+
 void test_lcd_habilitaEscrita(){
-    set_LCD_RS();
+    LCD_RS = 1;
     //PORTBbits.RB1 = 1;
     //PORTC = 0;
     // PORTAbits.RA0 = 0;
@@ -48,11 +49,26 @@ void test__LCD_writeCommand_5x8BitDisplay(){
 }
 void test__LCD_writeCommand_5x8BitDisplay_withPORTABitsHigh(){
     char cmd5x8display = 0x28;
-    set_LCD_E();
-    set_LCD_RW();
+    LCD_E = 1;
+    LCD_RW = 1;
     LCD_WriteCommand(cmd5x8display);
     TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
     TEST_ASSERT_BITS(0b00001000, 0x08, PORTB);
 
 }
+void test__LCD_writeDataCharacterW(){
+    char toWrite = 0x47; // 'W'
+    PORTB = 0x55;
+    LCD_WriteData(toWrite);
+    TEST_ASSERT_BITS(0b00101111, 0x27, PORTB);
+}
+void test__LCD_whenPORTBis255SendCharacter_thenPORTBLSBIs0x9(){
+    char toWrite = 0x59;// 'Y'
+    PORTB = 0xFF;
+    LCD_WriteData(toWrite);
+    TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
+    TEST_ASSERT_BITS(0b00101111, 0x29, PORTB);
+}
+
+
 #endif // TEST

@@ -22,11 +22,7 @@ void tearDown(void)
 {
 }
 
-void test_main_NeedToImplement(void)
-{
-    //test_main();
-    TEST_IGNORE_MESSAGE("Need to Implement main");
-}
+
 
 void test_PORTDiniciaZero(){
     //PORTD = 0;

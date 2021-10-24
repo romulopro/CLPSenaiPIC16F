@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "xc.h": "c"
+        "xc.h": "c",
+        "stub_pic16f877a.h": "c",
+        "hal.h": "c",
+        "lcd.h": "c"
     }
 }

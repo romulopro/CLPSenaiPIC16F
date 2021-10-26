@@ -69,6 +69,18 @@ void test__LCD_whenPORTBis255SendCharacter_thenPORTBLSBIs0x9(){
     TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
     TEST_ASSERT_BITS(0b00101111, 0x29, PORTB);
 }
+void test__LCD_write2CharOnFirstLineDisplay(){
+    char* twoLetters = "Oe";
+    LCD_WriteMessage(twoLetters);
+    TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
+    TEST_ASSERT_BITS(0b00101111, 0x25, PORTB);
+}
+void test__LCD_write3CharOnFirstLineDisplay(){
+    char* threeLetters = "ZAZ";
+    LCD_WriteMessage(threeLetters);
+    TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
+    TEST_ASSERT_BITS(0b00101111, 0x2A, PORTB);
+}
 
 
 #endif // TEST

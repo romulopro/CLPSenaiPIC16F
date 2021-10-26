@@ -30,7 +30,7 @@
 
 #include "system.h"        /* System funct/params, like osc/peripheral config */
 #include "user.h"          /* User funct/params, such as InitApp */
-
+#include "lcd.h"
 #define _XTAL_FREQ 4000000L
 //#include <pic16f877a.h>
 /******************************************************************************/
@@ -75,7 +75,7 @@ int main(void)
     
     //int PORTD = 0;
 #endif
-    
+    LCD_Init();
     
     while(1)
     {

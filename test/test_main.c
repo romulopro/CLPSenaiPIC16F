@@ -2,7 +2,7 @@
 #include "support/stub_pic16f877a.h"
 //#include "mock_xc.h"
 #include "main.h"
-
+#include "lcd.h"
 
 #include "unity.h"
 #include "system.h"        /* System funct/params, like osc/peripheral config */

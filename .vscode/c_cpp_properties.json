@@ -6,10 +6,10 @@
                 "${workspaceFolder}/**",
                 "/opt/microchip/xc8/v2.32/pic/include/c90",
                 "/opt/microchip/xc8/v2.32/pic/include",
-                "/var/lib/gems/2.7.0/gems/ceedling-0.31.1/vendor/cmock/vendor/unity/src"
+                "/var/lib/gems/2.7.0/gems/ceedling-0.31.1/vendor/cmock/vendor/unity/src",
+                "/home/note/Documentos/CLPSenaiPIC16F/test/support/"
             ],
             "defines": [],
-            
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c89",
             "cppStandard": "gnu++11",

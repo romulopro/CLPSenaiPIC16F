@@ -18,6 +18,7 @@
 //#define __XC
 #ifdef TEST
 //#include "stub_pic16f877a.h"
+#define __eeprom 
 #endif
 #if defined(__XC)
     #include <xc.h>         /* XC8 General Include File */
@@ -42,6 +43,9 @@
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
+__eeprom uint8_t endereco_modbus = 0x02;
+__eeprom uint8_t paridade = 0x01; // 1= impar, 2 = par
+__eeprom uint8_t bitrate = 0x01; // 1=9600 2= 19200
 #ifdef TEST
 
 //PORTDbits_t PORTDbits.PORTD = 0;

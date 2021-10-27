@@ -69,7 +69,7 @@ void LCD_WriteCommand(const char cmd){
     //put 10x delay
     __delay_ms(4);
     //send lower nibble
-    PORTB = PORTB & 0x11110000;
+    PORTB = ((char)PORTB & (char)0x11110000);
     PORTB |= (cmd & (0x0F));
     LCD_RS = 0;
     LCD_RW = 0;

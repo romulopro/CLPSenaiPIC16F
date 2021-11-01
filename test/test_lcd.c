@@ -3,13 +3,16 @@
 #include "unity.h"
 #include "hal.h"
 #include "lcd.h"
+#include <mock_eeprom_routines.h>
 
 #define LCD_RS PORTBbits.RB5
 #define LCD_RW PORTAbits.RA3
 #define LCD_E PORTAbits.RA2
 
+char endereco_modbus = 0x03;
 void setUp(void)
 {
+    
 }
 
 void tearDown(void)
@@ -80,6 +83,14 @@ void test__LCD_write3CharOnFirstLineDisplay(){
     LCD_WriteMessage(threeLetters);
     TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
     TEST_ASSERT_BITS(0b00101111, 0x2A, PORTB);
+}
+void test__LCD_init(){
+    char* endereco_modbus = "02";
+    char* paridade = "I";
+    char* baudrate = "19200";
+    LCD_Init(endereco_modbus, paridade, baudrate);
+    TEST_ASSERT_BITS_LOW(0b00001100, PORTA);
+    TEST_ASSERT_BITS(0b00101111, 0x20, PORTB);
 }
 
 

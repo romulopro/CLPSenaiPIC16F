@@ -1,7 +1,6 @@
 
 #ifdef TEST
 #include "stub_pic16f877a.h"
-
 #else
 #include <xc.h>
 #define _XTAL_FREQ 4000000L
@@ -30,7 +29,7 @@ void LCD_WriteMessage(const char* message){
     }
 }
 //Initialize LCD in 4-bit mode
-void LCD_Init(){
+void LCD_Init(const char* endereco_modbus, const char* paridade, const char* baudrate){
 
     //send higher nibble
     __delay_ms(18);
@@ -41,7 +40,10 @@ void LCD_Init(){
     LCD_WriteCommand(AUTO_INCREMENT_DISPLAY_RIGHT);
     /*At init, should display serial baud rate, modbus device address and parity
     */ 
-
+   LCD_WriteMessage(endereco_modbus);
+   LCD_WriteMessage(paridade);
+   
+   LCD_WriteMessage(baudrate);
 
 
     //put 10x delay
@@ -111,4 +113,7 @@ void LCD_WriteData(const char dataToWrite){
 void __delay_ms(const uint16_t time){
     return;
 }
+// unsigned char eeprom_read(const unsigned char address){
+//     return 03;
+// }
 #endif

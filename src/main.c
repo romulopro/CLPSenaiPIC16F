@@ -79,7 +79,8 @@ int main(void)
     
     //int PORTD = 0;
 #endif
-    LCD_Init();
+    
+    LCD_Init("01", "01", "9600");
     
     while(1)
     {
@@ -92,9 +93,4 @@ int main(void)
 
     return 0;
 
-}
-
-void pisca_portd_leds_init(){
-
-    
 }

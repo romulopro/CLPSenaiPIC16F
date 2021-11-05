@@ -484,7 +484,7 @@ typedef union {
  unsigned TRISD :8;
  };
 } TRISDbits_t;
-extern volatile TRISDbits_t TRISDbits ;//__at0x088);
+volatile TRISDbits_t TRISDbits ;//__at0x088);
 //extern int PORTD;
 //extern char TRISD = 0;
 // Register: TRISE

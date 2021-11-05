@@ -1,4 +1,8 @@
-#include "General.h"
+//#include "General.h"
+#ifdef TEST
+#include "stub_pic16f877a"
+#define 
+#endif
 #include "PetitModbus.h"
 #include "PetitModbusPort.h"
 
@@ -12,7 +16,9 @@ volatile unsigned char   PetitReceiveCounter=0;                                 
 void PetitModBus_UART_Initialise(void)
 {
 // Insert UART Init Code Here
-    InitUART();
+    //InitUART();
+
+
 }
 
 // Timer Initialize for Petit Modbus, 1ms Timer will be good for us!

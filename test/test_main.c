@@ -2,6 +2,7 @@
 #include "support/stub_pic16f877a.h"
 //#include "mock_xc.h"
 #include "main.h"
+//#include "user.h"
 #include "lcd.h"
 
 #include "unity.h"

@@ -7,8 +7,8 @@
 #elif defined(HI_TECH_C)
     #include <htc.h>        /* HiTech General Include File */
 #endif
-#if defined TEST
-    //#include "stub_pic16f877a.h"
+#ifdef TEST
+//#include "stub_pic16f877a.h"
 #endif
 #include <stdint.h>         /* For uint8_t definition */
 #include <stdbool.h>        /* For true/false definition */

@@ -1,11 +1,11 @@
 #include "PetitModbus.h"
 #include "PetitModbusPort.h"
-
+#include "main.h"
 /*******************************ModBus Functions*******************************/
 #define PETITMODBUS_READ_COILS                  1
 #define PETITMODBUS_READ_DISCRETE_INPUTS        2
-#define PETITMODBUS_READ_HOLDING_REGISTERS      3
-#define PETITMODBUS_READ_INPUT_REGISTERS        4
+#define PETITMODBUS_READ_HOLDING_REGISTERS      3 // PORTD R+W
+#define PETITMODBUS_READ_INPUT_REGISTERS        4 // PORTC0-5 RA4-5
 #define PETITMODBUS_WRITE_SINGLE_COIL           5
 #define PETITMODBUS_WRITE_SINGLE_REGISTER       6
 #define PETITMODBUS_WRITE_MULTIPLE_COILS        15
@@ -20,7 +20,7 @@
 #define PETIT_ERROR_CODE_01                     0x01                            // Function code is not supported
 #define PETIT_ERROR_CODE_02                     0x02                            // Register address is not allowed or write-protected
 
-unsigned char PETITMODBUS_SLAVE_ADDRESS         =1;
+unsigned char PETITMODBUS_SLAVE_ADDRESS         =1;// put to main, global
 
 typedef enum
 {
@@ -52,7 +52,11 @@ unsigned int        Petit_Rx_CRC16                = 0xFFFF;
 PETIT_RXTX_STATE    Petit_Rx_State                = PETIT_RXTX_IDLE;
 unsigned char       Petit_Rx_Data_Available       = FALSE;
 
-volatile unsigned short PetitModbusTimerValue         = 0;
+volatile unsigned short PetitModbusTimerValue         = 148 ;// t1.5 @9600 @4mhz ;
+//PORTD is digital output(R/W) and PORTC0-5 RA4/5 are digital input(read only)
+PetitRegStructure    PetitRegisters[NUMBER_OF_OUTPUT_PETITREGISTERS];
+
+
 /****************End of Slave Transmit and Receive Variables*******************/
 
 /*
@@ -282,7 +286,7 @@ unsigned char Petit_CheckRxTimeout(void)
     // A return value of true indicates there is a timeout    
     if (PetitModbusTimerValue>= PETITMODBUS_TIMEOUTTIMER)
     {
-        PetitModbusTimerValue   =0;
+        PetitModbusTimerValue   = 148;
         PetitReceiveCounter     =0;
         return TRUE;
     }
@@ -461,7 +465,7 @@ void ProcessPetitModbus(void)
  */
 void InitPetitModbus(unsigned char PetitModbusSlaveAddress)
 {
-    PETITMODBUS_SLAVE_ADDRESS    =PetitModbusSlaveAddress;
+    PETITMODBUS_SLAVE_ADDRESS = PetitModbusSlaveAddress;
     
     PetitModBus_UART_Initialise();
     PetitModBus_TIMER_Initialise();

@@ -8,7 +8,7 @@
 #ifndef __PETITMODBUS__H
 #define __PETITMODBUS__H
 
-#define NUMBER_OF_OUTPUT_PETITREGISTERS                 10                      // Petit Modbus RTU Slave Output Register Number
+#define NUMBER_OF_OUTPUT_PETITREGISTERS                 2                      // Petit Modbus RTU Slave Output Register Number
                                                                                 // Have to put a number of registers here
                                                                                 // It has to be bigger than 0 (zero)!!
 #define PETITMODBUS_TIMEOUTTIMER                        250                     // Timeout Constant for Petit Modbus RTU Slave [millisecond]
@@ -25,17 +25,18 @@
 
 // Variable for Slave Address
 extern unsigned char PETITMODBUS_SLAVE_ADDRESS;                                 // Petit Modbus RTU Slave icin adres numarasi [0 to 255]
+extern unsigned char parity_mode;
 
 typedef struct{
-            short                     ActValue;
+            char ActValue;
         }PetitRegStructure;
 
 extern PetitRegStructure    PetitRegisters[NUMBER_OF_OUTPUT_PETITREGISTERS];
 extern volatile unsigned short PetitModbusTimerValue;
 
 // Main Functions
-extern void             InitPetitModbus(unsigned char PetitModbusSlaveAddress);
-extern void             ProcessPetitModbus(void);
+extern void InitPetitModbus(unsigned char PetitModbusSlaveAddress);
+extern void ProcessPetitModbus(void);
 
 // Petit Modbus Port Header
 #include "PetitModbusPort.h"

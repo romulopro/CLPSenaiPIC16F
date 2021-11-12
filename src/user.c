@@ -12,11 +12,17 @@
 #endif
 #include <stdint.h>         /* For uint8_t definition */
 #include <stdbool.h>        /* For true/false definition */
-
 #include "user.h"
+#include "PetitModbus.h"
+#include "lcd.h"
 //#include <pic16f877a.h>
 #define SETA_COMO_SAIDA_PORT 0
 #define SETA_COMO_ENTRADA_PINOS_0_ATE_5_E_UART 0b10111111
+#define ADRRESS_DEVICE 0
+#define PARITY_EEPROM_ADDRESS 0x01
+#define BAUDRATE_EEPROM_ADREESS 0x02
+typedef enum {_9600 , _19200} baudrate;
+typedef enum {ODD, EVEN, NO_PARITY} parity_options;
 /******************************************************************************/
 /* User Functions                                                             */
 /******************************************************************************/
@@ -25,6 +31,9 @@
 
 void InitApp(void)
 {
+    uint_fast8_t bitrate = EEPROM_READ(BAUDRATE_EEPROM_ADREESS);
+    unsigned char parity_mode = EEPROM_READ(PARITY_EEPROM_ADDRESS);
+    unsigned char PETITMODBUS_SLAVE_ADDRESS = EEPROM_READ(ADRRESS_DEVICE);
     /* TODO Initialize User Ports/Peripherals/Project here */
     /* PORTD SAIDA DIGITAL */
     TRISD = SETA_COMO_SAIDA_PORT;
@@ -64,7 +73,49 @@ void InitApp(void)
     // INTCON,PEIE = 1;
     
     // PIE1,TMR1IE = 1;
+        //Timer0 Registers Prescaler= 16 - TMR0 Preset = 0 - Freq = 244.14 Hz - Period = 0.004096 seconds
+    OPTION_REGbits.T0CS = 0;  // bit 5  TMR0 Clock Source Select bit...0 = Internal Clock (CLKO) 1 = Transition on T0CKI pin
+    OPTION_REGbits.T0SE = 0;  // bit 4 TMR0 Source Edge Select bit 0 = low/high 1 = high/low
+    OPTION_REGbits.PSA = 0;   // bit 3  Prescaler Assignment bit...0 = Prescaler is assigned to the Timer0
+    OPTION_REGbits.PS2 = 0;   // bits 2-0  PS2:PS0: Prescaler Rate Select bits
+    OPTION_REGbits.PS1 = 1;
+    OPTION_REGbits.PS0 = 1;
+    TMR0 = 0;             // preset for timer register
+
+
+    // Interrupt Registers
+    //INTCONbits.INTCON = 0x00;           // clear the interrpt control register
+    INTCONbits.TMR0IE = 0;        // bit5 TMR0 Overflow Interrupt Enable bit...1 = Enables the TMR0 interrupt
+    INTCONbits.TMR0IF = 0;        // bit2 clear timer 0 interrupt flag
     
+    //getting_modbus_param_eeprom
     
+/*     switch (bitrate)
+    {
+    case _9600:
+        bitrate = _9600;
+        break;
+    case _19200:
+        bitrate = _19200;
+        break;
+    default: // case _9600
+        bitrate = _9600;
+        break;
+    } */
+
+    
+/*     switch(parity_modes){
+        case ODD:
+        parity_mode = ODD;
+        break;
+        case NO_PARITY:
+        parity_mode = NO_PARITY;
+        break;
+        default: // even
+        parity_mode = EVEN;
+        break;
+    } */
+
+    LCD_Init("01", "01", "9600");
 }
 

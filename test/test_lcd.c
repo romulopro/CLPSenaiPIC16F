@@ -3,16 +3,19 @@
 #include "unity.h"
 #include "hal.h"
 #include "lcd.h"
+#include "PetitModbus.h"
+#include "PetitModbusPort.h"
 #include <mock_eeprom_routines.h>
 
 #define LCD_RS PORTBbits.RB5
 #define LCD_RW PORTAbits.RA3
 #define LCD_E PORTAbits.RA2
 
-char endereco_modbus = 0x03;
+
+
 void setUp(void)
 {
-    
+    unsigned char PETITMODBUS_SLAVE_ADDRESS = 04;
 }
 
 void tearDown(void)

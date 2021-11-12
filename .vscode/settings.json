@@ -5,6 +5,7 @@
         "hal.h": "c",
         "lcd.h": "c",
         "eeprom_routines.h": "c",
-        "mock_eeprom_routines.h": "c"
+        "mock_eeprom_routines.h": "c",
+        "petitmodbus.h": "c"
     }
 }

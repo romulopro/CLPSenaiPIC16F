@@ -15,7 +15,7 @@
 
 //char PORTD = 0;
 //extern char PORTD = 0;
-char TRISD = 0;
+//char TRISD = 0;
 //#include "__at.h"
 
 // Register: INDF
@@ -335,7 +335,7 @@ typedef union {
  unsigned RCSTA :8;
  };
 } RCSTAbits_t;
-extern volatile RCSTAbits_t RCSTAbits ;//__at0x018);
+volatile RCSTAbits_t RCSTAbits ;//__at0x018);
 
 // Register: TXREG
 // bitfield definitions
@@ -659,7 +659,7 @@ typedef union {
  unsigned TXSTA :8;
  };
 } TXSTAbits_t;
-extern volatile TXSTAbits_t TXSTAbits ;//__at0x098);
+volatile TXSTAbits_t TXSTAbits ;//__at0x098);
 
 // Register: SPBRG
 // bitfield definitions
@@ -821,7 +821,7 @@ extern volatile EECON1bits_t EECON1bits ;//__at0x18C);
 #define SSPBUF SSPBUFbits.SSPBUF
 #define CCPR1 CCPR1bits.CCPR1
 #define RCSTA RCSTAbits.RCSTA
-#define TXREG TXREGbits.TXREG
+//#define TXREG TXREGbits.TXREG
 #define ADRESH ADRESHbits.ADRESH
 #define OPTION_REG OPTION_REGbits.OPTION_REG
 #define TRISA TRISAbits.TRISA

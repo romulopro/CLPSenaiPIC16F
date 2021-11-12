@@ -3,7 +3,7 @@
 #include "stub_pic16f877a.h"
 #else
 #include <xc.h>
-#define _XTAL_FREQ 18432000L
+#define _XTAL_FREQ 4000000L
 #endif
 #include "lcd.h"
 #include <stdint.h>

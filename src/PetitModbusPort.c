@@ -1,8 +1,18 @@
 //#include "General.h"
 #ifdef TEST
-#include "stub_pic16f877a"
-#define 
+#include "support/stub_pic16f877a.h"
+#include "lcd.h"
+#include <stdint.h>
+#define TRMT TXSTAbits.TRMT
+
+
+uint8_t TXREG;
+uint8_t RCREG;
+uint8_t TMR0;
+
+
 #endif
+#define TMR0_1_5char_timer_at_9600kbps 148
 #include "PetitModbus.h"
 #include "PetitModbusPort.h"
 
@@ -17,6 +27,20 @@ void PetitModBus_UART_Initialise(void)
 {
 // Insert UART Init Code Here
     //InitUART();
+    //SPBRG @ 4MHz BRGH(1) = 19200 is 12 and 9600 is 25
+    //Reception RCSTAbits
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 1;
+    RCSTAbits.CREN = 0;
+    RCSTAbits.ADDEN = 0;
+    //Transmission TXSTA
+    TXSTAbits.TX9 = 1;
+    TXSTAbits.TXEN = 1;
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 1;
+
+
+
 
 
 }
@@ -24,8 +48,10 @@ void PetitModBus_UART_Initialise(void)
 // Timer Initialize for Petit Modbus, 1ms Timer will be good for us!
 void PetitModBus_TIMER_Initialise(void)
 {
+    //1ms @ 4MHz
 // Insert TMR Init Code Here
-    InitTMR1();
+    __delay_ms(1);
+    //InitTMR1();
 }
 
 // This is used for send one character
@@ -51,18 +77,22 @@ unsigned char PetitModBus_UART_String(unsigned char *s, unsigned int Length)
 // Better to use DMA
 void ReceiveInterrupt(unsigned char Data)
 {
-    PetitReceiveBuffer[PetitReceiveCounter]   =Data;
+    PetitReceiveBuffer[PetitReceiveCounter] = RCREG;
     PetitReceiveCounter++;
 
     if(PetitReceiveCounter>PETITMODBUS_RECEIVE_BUFFER_SIZE)  
         PetitReceiveCounter=0;
 
-    PetitModbusTimerValue=0;
+    //For 9600, t1.5 = 148, t3.5 = 4.02ms = 4 for timer0
+    TMR0IF = 0;
+    TMR0 = TMR0_1_5char_timer_at_9600kbps; // colocar valor do timer0/1/2 aqui
+    
 }
 
 // Call this function into 1ms Interrupt or Event!
-void PetitModBus_TimerValues(void)
-{
-    PetitModbusTimerValue++;
-}
+// void PetitModBus_TimerValues(void)
+// {
+//     PetitModbusTimerValue++;
+// }
 /******************************************************************************/
+

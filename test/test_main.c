@@ -4,7 +4,8 @@
 #include "main.h"
 //#include "user.h"
 #include "lcd.h"
-
+#include "PetitModbusPort.h"
+#include "PetitModbus.h"
 #include "unity.h"
 #include "system.h"        /* System funct/params, like osc/peripheral config */
 //#include "user.h"          /* User funct/params, such as InitApp */

@@ -32,6 +32,7 @@
 #include "system.h"        /* System funct/params, like osc/peripheral config */
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "lcd.h"
+#include "PetitModbus.h"
 #define _XTAL_FREQ 4000000L
 //#include <pic16f877a.h>
 /******************************************************************************/
@@ -39,12 +40,19 @@
 /******************************************************************************/
 
 /* i.e. uint8_t <variable_name>; */
-
+/* typedef enum {_9600 , _19200} baudrate;
+typedef enum {ODD, EVEN, NO_PARITY} parity_options;
+uint8_t PETITMODBUS_SLAVE_ADDRESS  = 1;
+uint8_t PARITY = 1; //1 = ímpar
+uint8_t BAUDRATE = _9600; //9600 */
+//void ProcessPetitModbus(void);
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
+
+
 __eeprom uint8_t endereco_modbus = 0x02;
-__eeprom uint8_t paridade = 0x01; // 1= impar, 2 = par
+__eeprom uint8_t paridade = 0x01; // 1= impar, 2 = par, 3 no parity
 __eeprom uint8_t bitrate = 0x01; // 1=9600 2= 19200
 #ifdef TEST
 
@@ -77,11 +85,12 @@ int main(void)
     __delay_ms(500);
 #else
     
-    //int PORTD = 0;
+    
 #endif
     
-    LCD_Init("01", "01", "9600");
     
+    //ProcessPetitModbus();
+
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */

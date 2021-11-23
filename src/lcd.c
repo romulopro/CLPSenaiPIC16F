@@ -12,17 +12,7 @@
 
 //void set_RB5(void);
 //RB0-3 -- DB4-7
-#define LCD_RS PORTBbits.RB5
-#define LCD_RW PORTAbits.RA3
-#define LCD_E PORTAbits.RA2
-#define SET_LCD_MODE_4BIT 0x20
-#define SET_LCD_MODE_4BIT_2LINES_5X8PIXEL 0x28
-#define CURSOR_ON_BLINK_OFF_DISPLAY_ON 0x0E
-#define PUT_LCD_CURSOR_AT_HOME 0x02
-#define AUTO_INCREMENT_DISPLAY_RIGHT 0x06
-#define CURSOR_AT_2ND_LINE 0xC0
-#define CURSOR_AT_1ST_LINE 0xC0
-#define INCREMENT_CURSOR_POSITION 0x07
+
 
 
 void LCD_WriteMessage(const char* message){
@@ -50,8 +40,6 @@ void LCD_Init(const char* endereco_modbus, const char* paridade, const char* bau
    LCD_WriteCommand(INCREMENT_CURSOR_POSITION);
    LCD_WriteMessage(baudrate);
 
-
-    //put 10x delay
 }
 void LCD_WriteCommand(const char cmd){
     //PORTB &= 0x11110000;
@@ -60,10 +48,8 @@ void LCD_WriteCommand(const char cmd){
     LCD_RS = 0;
     LCD_RW = 0;
     LCD_E = 1;
-
     __delay_ms(2);
     LCD_E = 0;
-    //put 10x delay
     __delay_ms(4);
     //send lower nibble
     PORTB &= 0b11110000;
@@ -71,11 +57,10 @@ void LCD_WriteCommand(const char cmd){
     LCD_RS = 0;
     LCD_RW = 0;
     LCD_E = 1;
-    //put x delay
     __delay_ms(2);
     LCD_E = 0;
     __delay_ms(4);
-    //put 10x delay
+    
 }
 
 void LCD_WriteData(const char dataToWrite){
@@ -84,10 +69,8 @@ void LCD_WriteData(const char dataToWrite){
     LCD_RS = 1;
     LCD_RW = 0;
     LCD_E = 1;
-    //put x delay
     __delay_ms(1);
     LCD_E = 0;
-    //put 10x delay
     __delay_ms(1);
     //send lower nibble
     PORTB &= 0b11110000;
@@ -95,21 +78,9 @@ void LCD_WriteData(const char dataToWrite){
     LCD_RS = 1;
     LCD_RW = 0;
     LCD_E = 1;
-    //put x delay
     __delay_ms(1);
     LCD_E = 0;
     __delay_ms(1);
-    //put 10x delay
     return;
 }
 
-//send lower bits of the command to DS4_DS7 display pins
-//void sendLowerNibble 
-#ifdef TEST
-void __delay_ms(const uint16_t time){
-    return;
-}
-// unsigned char eeprom_read(const unsigned char address){
-//     return 03;
-// }
-#endif

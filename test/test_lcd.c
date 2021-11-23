@@ -15,7 +15,7 @@
 
 void setUp(void)
 {
-    unsigned char PETITMODBUS_SLAVE_ADDRESS = 04;
+    //PETITMODBUS_SLAVE_ADDRESS = 04;
 }
 
 void tearDown(void)

@@ -7,15 +7,12 @@
 
 #ifndef STUB_PIC16F877A_H
 #define STUB_PIC16F877A_H
-
+#include <stdint.h>
 #define __CLANG__
 #define _BV(bit) (1 << (bit))
 
+void __delay_ms(const uint16_t);
 
-
-//char PORTD = 0;
-//extern char PORTD = 0;
-//char TRISD = 0;
 //#include "__at.h"
 
 // Register: INDF

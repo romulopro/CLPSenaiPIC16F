@@ -7,10 +7,10 @@
 #include <mock_eeprom_routines.h>
 #include "PetitModbus.h"
 #include "PetitModbusPort.h"
-unsigned char PETITMODBUS_SLAVE_ADDRESS = 04;
+//PETITMODBUS_SLAVE_ADDRESS = 04;
 void setUp(void)
 {
-    
+    PETITMODBUS_SLAVE_ADDRESS = 04;
 }
 
 void tearDown(void)

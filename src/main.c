@@ -56,9 +56,6 @@ __eeprom uint8_t paridade = 0x01; // 1= impar, 2 = par, 3 no parity
 __eeprom uint8_t bitrate = 0x01; // 1=9600 2= 19200
 #ifdef TEST
 
-//PORTDbits_t PORTDbits.PORTD = 0;
-// INTCON = {0X00};
-
 
 int test_main(void)
 

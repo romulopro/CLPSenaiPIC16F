@@ -69,7 +69,7 @@ int main(void)
     /* Configure the oscillator for the device */
 #ifndef TEST
     ConfigureOscillator();
-
+    __delay_ms(1000);
     /* Initialize I/O and Peripherals for application */
     InitApp();
 
@@ -83,6 +83,8 @@ int main(void)
     __delay_ms(500);
     PORTD = 0xAA;
     __delay_ms(500);
+    char dataToWrite[10] = "Gayola";
+    LCD_WriteData(dataToWrite);
 #else
     
     

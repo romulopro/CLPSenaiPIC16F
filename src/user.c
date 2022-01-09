@@ -31,9 +31,9 @@ typedef enum {ODD, EVEN, NO_PARITY} parity_options;
 
 void InitApp(void)
 {
-    uint_fast8_t bitrate = EEPROM_READ(BAUDRATE_EEPROM_ADREESS);
-    unsigned char parity_mode = EEPROM_READ(PARITY_EEPROM_ADDRESS);
-    unsigned char PETITMODBUS_SLAVE_ADDRESS = EEPROM_READ(ADRRESS_DEVICE);
+//    uint_fast8_t bitrate = EEPROM_READ(BAUDRATE_EEPROM_ADREESS);
+//    unsigned char parity_mode = EEPROM_READ(PARITY_EEPROM_ADDRESS);
+//    unsigned char PETITMODBUS_SLAVE_ADDRESS = EEPROM_READ(ADRRESS_DEVICE);
     /* TODO Initialize User Ports/Peripherals/Project here */
     /* PORTD SAIDA DIGITAL */
     TRISD = SETA_COMO_SAIDA_PORT;
@@ -116,6 +116,7 @@ void InitApp(void)
         break;
     } */
 
-    LCD_Init("01", "01", "9600");
+    //LCD_Init("01", "01", "9600");
+    return;
 }
 

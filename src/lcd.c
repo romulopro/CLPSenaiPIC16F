@@ -10,11 +10,6 @@
 #include <stdbool.h>
 #include "hal.h"
 
-//void set_RB5(void);
-//RB0-3 -- DB4-7
-
-
-
 void LCD_WriteMessage(const char* message){
 
     for(uint8_t ii = 0; message[ii]!='\0'; ii++){
@@ -42,7 +37,6 @@ void LCD_Init(const char* endereco_modbus, const char* paridade, const char* bau
 
 }
 void LCD_WriteCommand(const char cmd){
-    //PORTB &= 0x11110000;
     PORTB &= 0b11110000;
     PORTB |= ((cmd >> 4) & 0x0F);
     LCD_RS = 0;

@@ -11,12 +11,8 @@
 #define __CLANG__
 #define _BV(bit) (1 << (bit))
 
+#include <stdint.h>
 
-
-//char PORTD = 0;
-//extern char PORTD = 0;
-//char TRISD = 0;
-//#include "__at.h"
 
 // Register: INDF
 // bitfield definitions
@@ -843,3 +839,4 @@ extern volatile EECON1bits_t EECON1bits ;//__at0x18C);
 
 #endif /* STUB_PIC16F877A_H */
 
+void __delay_ms(const uint16_t delay);

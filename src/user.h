@@ -11,3 +11,5 @@
 /* TODO User level functions prototypes (i.e. InitApp) go here */
 
 void InitApp(void);         /* I/O and Peripheral Initialization */
+// typedef enum {_9600 , _19200} baudrate;
+// typedef enum {ODD, EVEN, NO_PARITY} parity_options;

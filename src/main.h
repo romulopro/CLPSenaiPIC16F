@@ -6,6 +6,6 @@ int test_main(void);
 // void InitApp(void);
 // void ConfigureOscillator(void);
 
-extern uint8_t PARITY; //1 = ímpar
-extern uint8_t baud; //9600
+typedef enum {_9600 , _19200} baudrate;
+typedef enum {ODD, EVEN, NO_PARITY} parity_options;
 #endif // MAIN_H

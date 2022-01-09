@@ -21,8 +21,7 @@
 #define ADRRESS_DEVICE 0
 #define PARITY_EEPROM_ADDRESS 0x01
 #define BAUDRATE_EEPROM_ADREESS 0x02
-typedef enum {_9600 , _19200} baudrate;
-typedef enum {ODD, EVEN, NO_PARITY} parity_options;
+
 /******************************************************************************/
 /* User Functions                                                             */
 /******************************************************************************/
@@ -31,9 +30,7 @@ typedef enum {ODD, EVEN, NO_PARITY} parity_options;
 
 void InitApp(void)
 {
-//    uint_fast8_t bitrate = EEPROM_READ(BAUDRATE_EEPROM_ADREESS);
-//    unsigned char parity_mode = EEPROM_READ(PARITY_EEPROM_ADDRESS);
-//    unsigned char PETITMODBUS_SLAVE_ADDRESS = EEPROM_READ(ADRRESS_DEVICE);
+
     /* TODO Initialize User Ports/Peripherals/Project here */
     /* PORTD SAIDA DIGITAL */
     TRISD = SETA_COMO_SAIDA_PORT;
